@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cors({
-    origin : process.env.BASE_URL,
+    origin : 'https://api-driven-mini-web-app-iota.vercel.app',
     methods : 'GET, POST, PUT, DELETE',
     credentials : true
 }))
