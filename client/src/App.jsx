@@ -178,8 +178,9 @@ function App() {
                       >
                         <span className="truncate">{repo.name}</span>
                         <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                      </a>
+                      </a>{repo.html_url}
                     </div>
+                    {repo.html_url}
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
                       {repo.description || "No description available"}
                     </p>
