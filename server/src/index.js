@@ -11,10 +11,21 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const allowedOrigins = [
+  "https://api-driven-mini-web-app-iota.vercel.app"  // ✅ no trailing slash
+];
+
 app.use(cors({
-    origin : 'https://api-driven-mini-web-app-iota.vercel.app',
-    methods : 'GET, POST, PUT, DELETE',
-    credentials : true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  // origin : 'https://api-driven-mini-web-app-iota.vercel.app',
+  methods : 'GET, POST, PUT, DELETE',
+  credentials : true
 }))
 
 app.get("/api/search", async (req, res) => {
